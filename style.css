@@ -1,0 +1,31 @@
+/* Minerva Events: custom CSS additions on top of Tailwind */
+
+body {
+  font-feature-settings: "cv02","cv03","cv04","cv11";
+}
+
+/* Soft radial highlight in hero */
+.hero-ambient {
+  background-image:
+    radial-gradient(1200px 400px at 10% -10%, white, transparent),
+    radial-gradient(1200px 400px at 110% -10%, white, transparent);
+}
+
+/* Elevated card look (subtle 3D) */
+.elevated-card {
+  border-radius: 1.25rem; /* 20px; harmonizes with rounded-3xl */
+  box-shadow:
+    0 14px 30px -10px rgba(2, 43, 58, 0.35), /* main drop */
+    0 6px 14px -6px rgba(2, 43, 58, 0.25),   /* secondary */
+    inset 0 1px 0 rgba(255, 255, 255, 0.65); /* top sheen */
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.elevated-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 22px 42px -14px rgba(2, 43, 58, 0.45),
+    0 10px 18px -8px rgba(2, 43, 58, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+

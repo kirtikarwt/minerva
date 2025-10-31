@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minerva • Events & Activities</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            minerva: {
+              dark: '#0b3b46',
+              brand: '#0f4c5c',
+              accent: '#2563eb',
+            }
+          },
+          boxShadow: { card: '0 8px 30px rgba(0,0,0,0.08)' }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="./events.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='10' y='70' font-size='64'%3EM%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Discover upcoming events, register easily, or relive moments from past events.">
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <!-- Site Nav (Minerva-style) -->
+  <nav class="fixed inset-x-0 top-0 z-50 bg-[#022B3A] text-teal-100">
+    <div class="mx-auto max-w-7xl px-6 py-3 lg:px-8">
+      <div class="flex items-center justify-between gap-6">
+        <a href="/" class="flex items-center gap-3 text-white">
+          <img src="logo.png" alt="Minerva" class="h-8 w-8 rounded-md object-contain bg-white/10 p-1">
+          <span class="text-lg font-semibold tracking-wide text-[#F5CAC3]">MINERVA</span>
+        </a>
+        <div class="hidden items-center gap-3 md:flex">
+          <a href="#" class="px-3 py-1.5 text-teal-100 hover:text-white">Home</a>
+          <a href="#" class="rounded-full bg-white px-4 py-1.5 font-semibold text-slate-900 shadow ring-1 ring-black/5">Events</a>
+          <a href="#" class="px-3 py-1.5 text-teal-100 hover:text-white">Content</a>
+          <a href="#" class="px-3 py-1.5 text-teal-100 hover:text-white">Writes</a>
+          <a href="#" class="px-3 py-1.5 text-teal-100 hover:text-white">Team</a>
+          <a href="#" class="rounded-full px-4 py-1.5 text-teal-100 hover:bg-white/10 hover:text-white">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Social Sidebar -->
+  <aside class="fixed left-3 top-1/3 z-40 hidden md:block">
+    <div class="flex flex-col items-center gap-3 bg-[#F49997] p-3 shadow-lg ring-1 ring-[#F49997]">
+      <a aria-label="GitHub" href="#" class="grid h-7 w-7 place-items-center text-white hover:opacity-90">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.016c0 4.428 2.865 8.185 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.866-.014-1.7-2.782.604-3.369-1.343-3.369-1.343-.455-1.157-1.11-1.466-1.11-1.466-.908-.62.069-.607.069-.607 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.833.091-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.987 1.03-2.688-.103-.253-.447-1.272.098-2.65 0 0 .84-.269 2.75 1.027A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.748-1.027 2.748-1.027.546 1.378.202 2.397.099 2.65.64.701 1.028 1.595 1.028 2.688 0 3.847-2.339 4.695-4.566 4.944.36.31.68.92.68 1.853 0 1.337-.012 2.415-.012 2.744 0 .268.18.58.688.481A10.02 10.02 0 0 0 22 12.016C22 6.484 17.523 2 12 2Z" clip-rule="evenodd"/></svg>
+      </a>
+      <a aria-label="LinkedIn" href="#" class="grid h-7 w-7 place-items-center text-white hover:opacity-90">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M19 3A2.94 2.94 0 0 1 22 6v12a2.94 2.94 0 0 1-3 3H5a2.94 2.94 0 0 1-3-3V6a2.94 2.94 0 0 1 3-3h14ZM8.338 9.75H5.93v8.32h2.408V9.75Zm.188-2.77a1.42 1.42 0 0 0-1.421-1.42h-.03a1.42 1.42 0 0 0 0 2.84h.03a1.42 1.42 0 0 0 1.421-1.42ZM20 18.07v-4.35c0-2.332-1.246-3.416-2.911-3.416-1.341 0-1.943.737-2.279 1.255v-1.81h-2.407c.03.595 0 8.32 0 8.32h2.407v-4.649c0-.248.018-.497.091-.675.2-.497.656-1.012 1.42-1.012 1.003 0 1.405.764 1.405 1.883v4.453H20Z"/></svg>
+      </a>
+      <a aria-label="Instagram" href="#" class="grid h-7 w-7 place-items-center text-white hover:opacity-90">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm-5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5Zm5.75-3a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25Z"/></svg>
+      </a>
+    </div>
+  </aside>
+  <!-- Header / Hero -->
+  <header class="relative isolate overflow-hidden bg-minerva-brand text-white pt-16">
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+      <div class="mx-auto max-w-3xl">
+        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl bg-gradient-to-r from-amber-400 via-emerald-600 to-slate-800 bg-clip-text text-transparent">Events &amp; Activities</h1>
+        <p class="mt-4 text-lg text-teal-100">Discover upcoming events, register easily, or relive moments from past events.</p>
+        <div class="mt-6 flex items-center gap-3">
+          <label for="eventSearch" class="sr-only">Search events</label>
+          <div class="relative w-full max-w-md">
+            <input id="eventSearch" class="w-full rounded-xl border-0 px-4 py-3 pr-10 text-slate-900 shadow ring-1 ring-inset ring-white/20 placeholder:text-white/70 focus:ring-2 focus:ring-white/60" placeholder="Search events…" type="search">
+            <div class="pointer-events-none absolute inset-y-0 right-3 grid place-items-center text-white/80">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 4.22 12.03l3.75 3.75a.75.75 0 1 0 1.06-1.06l-3.75-3.75A6.75 6.75 0 0 0 10.5 3.75Zm-5.25 6.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Z" clip-rule="evenodd"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="absolute inset-0 -z-10 opacity-10 hero-ambient"></div>
+  </header>
+
+  <!-- Upcoming Events -->
+  <section class="mx-auto max-w-7xl px-6 py-14 lg:px-8">
+    <div class="mb-4 flex items-center justify-between gap-3">
+      <h2 class="text-2xl font-extrabold tracking-tight text-minerva-brand sm:text-3xl">Upcoming Events</h2>
+      <div class="flex items-center gap-2">
+        <button id="upcomingPrev" class="hidden rounded-full bg-white p-2 shadow ring-1 ring-slate-200 hover:bg-slate-50 md:inline-flex" aria-label="Previous">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M15.53 4.47a.75.75 0 0 1 0 1.06L9.06 12l6.47 6.47a.75.75 0 1 1-1.06 1.06l-7-7a.75.75 0 0 1 0-1.06l7-7a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd"/></svg>
+        </button>
+        <button id="upcomingNext" class="hidden rounded-full bg-white p-2 shadow ring-1 ring-slate-200 hover:bg-slate-50 md:inline-flex" aria-label="Next">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M8.47 19.53a.75.75 0 0 1 0-1.06L14.94 12 8.47 5.53A.75.75 0 1 1 9.53 4.47l7 7a.75.75 0 0 1 0 1.06l-7 7a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="upcomingGrid" class="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2 [scrollbar-width:none] [-ms-overflow-style:none]">
+      <style>
+        #upcomingGrid::-webkit-scrollbar{display:none}
+      </style>
+      <!-- Card Template Instances -->
+      <article class="event-card elevated-card group rounded-3xl bg-white ring-1 ring-slate-200/70 snap-start min-w-[300px] md:min-w-[360px]" data-tags="conference tech">
+        <img alt="Tech Conference" src="tech conference.jpeg" class="h-44 w-full rounded-t-2xl object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold">Tech Conference 2024</h3>
+          <p class="mt-1 text-slate-600">May 12, 2024 • 08:00 AM</p>
+          <p class="text-slate-500">Convention Center</p>
+          <p class="mt-3 line-clamp-3 text-slate-600">A day of talks and networking with industry leaders.</p>
+          <div class="mt-6 flex items-center gap-3">
+            <button data-action="info" class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-2.5 font-semibold text-slate-800 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-400">Info</button>
+            <button data-action="register" class="inline-flex items-center justify-center rounded-xl bg-minerva-accent px-4 py-2.5 font-semibold text-white shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Register</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="event-card elevated-card group rounded-3xl bg-white ring-1 ring-slate-200/70 snap-start min-w-[300px] md:min-w-[360px]" data-tags="tech workshop coding">
+        <img alt="Tech Workshop" src="tech con.jpeg" class="h-44 w-full rounded-t-2xl object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold">Tech Workshop</h3>
+          <p class="mt-1 text-slate-600">June 5, 2024 • 2:00 PM</p>
+          <p class="text-slate-500">Innovation Lab</p>
+          <p class="mt-3 line-clamp-3 text-slate-600">Hands-on session covering web, Git, and modern tooling.</p>
+          <div class="mt-6 flex items-center gap-3">
+            <button data-action="info" class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-2.5 font-semibold text-slate-800 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-400">Info</button>
+            <button data-action="register" class="inline-flex items-center justify-center rounded-xl bg-minerva-accent px-4 py-2.5 font-semibold text-white shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Register</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="event-card elevated-card group rounded-3xl bg-white ring-1 ring-slate-200/70 snap-start min-w-[300px] md:min-w-[360px]" data-tags="tech ai bootcamp">
+        <img alt="AI Bootcamp" src="aiml.jpg" class="h-44 w-full rounded-t-2xl object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold">AI &amp; ML Bootcamp</h3>
+          <p class="mt-1 text-slate-600">June 15, 2024 • 9:00 AM</p>
+          <p class="text-slate-500">Computer Lab</p>
+          <p class="mt-3 line-clamp-3 text-slate-600">Dive into practical machine learning with notebooks and datasets.</p>
+          <div class="mt-6 flex items-center gap-3">
+            <button data-action="info" class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-2.5 font-semibold text-slate-800 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-400">Info</button>
+            <button data-action="register" class="inline-flex items-center justify-center rounded-xl bg-minerva-accent px-4 py-2.5 font-semibold text-white shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Register</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Past Events -->
+  <section class="mx-auto max-w-7xl px-6 pb-20 lg:px-8">
+    <div class="mb-4 flex items-center justify-between gap-3">
+      <h2 class="text-2xl font-extrabold tracking-tight text-minerva-brand sm:text-3xl">Past Events</h2>
+      <div class="flex items-center gap-2">
+        <button id="pastPrev" class="hidden rounded-full bg-white p-2 shadow ring-1 ring-slate-200 hover:bg-slate-50 md:inline-flex" aria-label="Previous">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M15.53 4.47a.75.75 0 0 1 0 1.06L9.06 12l6.47 6.47a.75.75 0 1 1-1.06 1.06l-7-7a.75.75 0 0 1 0-1.06l7-7a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd"/></svg>
+        </button>
+        <button id="pastNext" class="hidden rounded-full bg-white p-2 shadow ring-1 ring-slate-200 hover:bg-slate-50 md:inline-flex" aria-label="Next">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M8.47 19.53a.75.75 0 0 1 0-1.06L14.94 12 8.47 5.53A.75.75 0 1 1 9.53 4.47l7 7a.75.75 0 0 1 0 1.06l-7 7a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="pastGrid" class="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2 [scrollbar-width:none] [-ms-overflow-style:none]">
+      <style>#pastGrid::-webkit-scrollbar{display:none}</style>
+      <article class="elevated-card rounded-3xl bg-white ring-1 ring-slate-200/70 snap-start min-w-[320px] md:min-w-[360px]">
+        <img alt="Hackathon 2023" src="mhack.jpg" class="h-56 w-full rounded-t-2xl object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold">Minerva Hackathon 2023</h3>
+          <p class="mt-2 text-slate-600">48-hour build sprint with teams shipping AI, web and IoT projects.</p>
+          <button data-action="highlights" class="mt-6 inline-flex items-center justify-center rounded-xl bg-emerald-700 px-4 py-2.5 font-semibold text-white shadow hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-600">View Highlights</button>
+        </div>
+      </article>
+
+      <article class="elevated-card rounded-3xl bg-white ring-1 ring-slate-200/70 snap-start min-w-[320px] md:min-w-[360px]">
+        <img alt="Cloud Summit" src="cloud.png" class="h-56 w-full rounded-t-2xl object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold">Cloud &amp; DevOps Summit</h3>
+          <p class="mt-2 text-slate-600">Talks on containers, CI/CD and scalable architectures.</p>
+          <button data-action="highlights" class="mt-6 inline-flex items-center justify-center rounded-xl bg-emerald-700 px-4 py-2.5 font-semibold text-white shadow hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-600">View Highlights</button>
+        </div>
+      </article>
+
+      <article class="elevated-card rounded-3xl bg-white ring-1 ring-slate-200/70 snap-start min-w-[320px] md:min-w-[360px]">
+        <img alt="Cybersecurity Workshop" src="Cybersecurity.jpg" class="h-56 w-full rounded-t-2xl object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold">Cybersecurity Workshop</h3>
+          <p class="mt-2 text-slate-600">Hands-on labs on OWASP Top 10 and securing web apps.</p>
+          <button data-action="highlights" class="mt-6 inline-flex items-center justify-center rounded-xl bg-emerald-700 px-4 py-2.5 font-semibold text-white shadow hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-600">View Highlights</button>
+        </div>
+      </article>
+
+      <article class="elevated-card rounded-3xl bg-white ring-1 ring-slate-200/70 snap-start min-w-[320px] md:min-w-[360px]">
+        <img alt="Data Science Day" src="ds.jpg" class="h-56 w-full rounded-t-2xl object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold">Data Science Day</h3>
+          <p class="mt-2 text-slate-600">Talks and tutorials on analytics, visualization and ML pipelines.</p>
+          <button data-action="highlights" class="mt-6 inline-flex items-center justify-center rounded-xl bg-emerald-700 px-4 py-2.5 font-semibold text-white shadow hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-600">View Highlights</button>
+        </div>
+      </article>
+
+      <article class="elevated-card rounded-3xl bg-white ring-1 ring-slate-200/70 snap-start min-w-[320px] md:min-w-[360px]">
+        <img alt="Open Source Meetup" src="os.jpeg" class="h-56 w-full rounded-t-2xl object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold">Open Source Meetup</h3>
+          <p class="mt-2 text-slate-600">Community night contributing to OSS projects across the stack.</p>
+          <button data-action="highlights" class="mt-6 inline-flex items-center justify-center rounded-xl bg-emerald-700 px-4 py-2.5 font-semibold text-white shadow hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-600">View Highlights</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white">
+    <div class="mx-auto max-w-7xl px-6 pt-10 text-center">
+      <div class="text-lg font-semibold text-slate-800">© <span id="year"></span> Minerva. All rights reserved</div>
+      <div class="mt-1 inline-flex items-center gap-2 text-slate-600">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-red-500"><path fill-rule="evenodd" d="M11.54 22.35a.75.75 0 0 0 .92 0c1.14-.9 7.52-6.13 7.52-12.1A7.5 7.5 0 0 0 12 2.75a7.5 7.5 0 0 0-8 7.5c0 5.97 6.38 11.2 7.52 12.1ZM12 12.5a2.25 2.25 0 1 1 0-4.5 2.25 2.25 0 0 1 0 4.5Z" clip-rule="evenodd"/></svg>
+        <span>Delhi, India</span>
+      </div>
+    </div>
+    <div class="mt-6 w-full">
+      <!-- Replace src with your saved image filename (e.g., skyline.png) -->
+      <img src="sky copy.jpeg" alt="City skyline" class="mx-auto block h-auto w-full max-h-40 object-cover">
+    </div>
+  </footer>
+
+  <!-- Dialogs -->
+  <div id="dialog" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-6">
+    <div class="w-full max-w-lg rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
+      <h3 id="dialogTitle" class="text-xl font-bold">Title</h3>
+      <p id="dialogBody" class="mt-2 text-slate-600">Body</p>
+      <div class="mt-6 flex justify-end gap-3">
+        <button id="dialogClose" class="rounded-xl bg-slate-800 px-4 py-2.5 text-sm font-semibold text-white">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./events.js"></script>
+</body>
+</html>
+
+
+
