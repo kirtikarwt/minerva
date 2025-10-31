@@ -11,21 +11,104 @@ body {
     radial-gradient(1200px 400px at 110% -10%, white, transparent);
 }
 
-/* Elevated card look (subtle 3D) */
+/* Enhanced 3D card with animated gradient border */
+.elevated-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 1.6rem;
+  padding: 2px;
+  background: linear-gradient(135deg, 
+    rgba(245, 202, 195, 0.7) 0%,
+    rgba(15, 76, 92, 0.5) 25%,
+    rgba(244, 153, 151, 0.7) 50%,
+    rgba(15, 76, 92, 0.5) 75%,
+    rgba(245, 202, 195, 0.7) 100%);
+  background-size: 200% 200%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+  z-index: 0;
+  animation: borderShift 4s ease infinite;
+}
+
+@keyframes borderShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.elevated-card:hover::before {
+  opacity: 1;
+}
+
+/* Perspective container for 3D effect */
 .elevated-card {
-  border-radius: 1.25rem; /* 20px; harmonizes with rounded-3xl */
-  box-shadow:
-    0 14px 30px -10px rgba(2, 43, 58, 0.35), /* main drop */
-    0 6px 14px -6px rgba(2, 43, 58, 0.25),   /* secondary */
-    inset 0 1px 0 rgba(255, 255, 255, 0.65); /* top sheen */
-  transition: transform 160ms ease, box-shadow 160ms ease;
-}
-.elevated-card:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    0 22px 42px -14px rgba(2, 43, 58, 0.45),
-    0 10px 18px -8px rgba(2, 43, 58, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
+/* Scrollbar hiding */
+#upcomingGrid::-webkit-scrollbar, 
+#pastGrid::-webkit-scrollbar {
+  display: none;
+}
 
+/* Add subtle animation on page load */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.elevated-card {
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.elevated-card:nth-child(1) { animation-delay: 0.1s; }
+.elevated-card:nth-child(2) { animation-delay: 0.2s; }
+.elevated-card:nth-child(3) { animation-delay: 0.3s; }
+.elevated-card:nth-child(4) { animation-delay: 0.4s; }
+.elevated-card:nth-child(5) { animation-delay: 0.5s; }
+
+/* Enhanced dialog entrance animation */
+#dialog.flex {
+  animation: dialogFadeIn 0.3s ease-out;
+}
+
+@keyframes dialogFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#dialog.flex > div {
+  animation: dialogSlideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes dialogSlideUp {
+  from {
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Smooth scroll for grids */
+#upcomingGrid,
+#pastGrid {
+  scroll-behavior: smooth;
+}
